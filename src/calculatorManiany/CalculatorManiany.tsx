@@ -9,7 +9,7 @@ import {
     InputLabel,
     Select,
     MenuItem,
-    FormHelperText, FormControlLabel, FormLabel, RadioGroup, Radio
+    FormHelperText, FormControlLabel, RadioGroup, Radio
 } from '@mui/material';
 import _ from "lodash";
 import {ErrorType, FormState, GenderType, initialState, WorkType} from "./config";
