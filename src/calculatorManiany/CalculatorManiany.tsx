@@ -157,7 +157,7 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
                 />
                 <TextField
                     type="number"
-                    label={t('height')}
+                    label={t('age')}
                     value={formState.age}
                     onChange={(e) => setFormState(prevState => ({...prevState, age: e.target.value}))}
                     variant="outlined"

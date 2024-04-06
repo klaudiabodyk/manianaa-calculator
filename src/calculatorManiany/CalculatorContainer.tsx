@@ -8,7 +8,7 @@ const CalculatorContainer = () => {
     return (
             <div>
                 <CalculatorManiany onCalculate={(result) => setResult(result)} />
-                <Typography variant="h2" align="center" gutterBottom >
+                <Typography variant="h3" align="center" gutterBottom padding={"30px"} >
                     {i18n.t('finalScore')} {result} kcal.
                 </Typography>
             </div>
