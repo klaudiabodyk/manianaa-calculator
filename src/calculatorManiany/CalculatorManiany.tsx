@@ -41,7 +41,7 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
             newErrors = newErrors.filter(error => error !== ErrorType.WORK_TYPE_ERROR);
         }
         setErrors(newErrors);
-    }, [formState]);
+    }, [formState, errors]);
 
     const handleErrors = (formState: FormState, errors: any) => {
         let newErrors = _.cloneDeep(errors);
