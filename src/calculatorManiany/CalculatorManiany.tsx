@@ -97,16 +97,16 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
                 break;
         }
 
-        if (formState.weightReductionOption === 'reduce') {
-            ppm -= 300;
-        } else if (formState.weightReductionOption === 'calculate') {
-            ppm += 300;
-        }
-
         const result = ppm * multiplier;
+        let clonedResult = _.cloneDeep(result)
+        if (formState.weightReductionOption === 'reduce') {
+            clonedResult -= 300;
+        } else if (formState.weightReductionOption === 'calculate') {
+            clonedResult += 300;
+        }
         handleErrors(formState, errors);
         if (errors.length === 0) {
-            onCalculate(result);
+            onCalculate(clonedResult);
         }
     };
 
