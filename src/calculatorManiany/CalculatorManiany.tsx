@@ -13,12 +13,14 @@ import {
 } from '@mui/material';
 import _ from "lodash";
 import {ErrorType, FormState, GenderType, initialState, WorkType} from "./config";
+import {useTranslation} from "react-i18next";
 
 interface CalculatorManianyProps {
     onCalculate: (result: number) => void;
 }
 
 const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
+    const { t } = useTranslation();
     const [formState, setFormState] = useState<FormState>(initialState);
     const [errors, setErrors] = useState<string[]>([]);
 
@@ -77,28 +79,28 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
         let multiplier = 1;
         switch (formState.workType) {
             case WorkType.SEDENTARY:
-                multiplier = 1.2;
-                break;
-            case WorkType.SEDENTARY_1_2_WORKOUTS:
                 multiplier = 1.3;
                 break;
-            case WorkType.SEDENTARY_3_4_WORKOUTS:
+            case WorkType.SEDENTARY_1_2_WORKOUTS:
                 multiplier = 1.4;
                 break;
-            case WorkType.PHYSICAL_WORK:
+            case WorkType.SEDENTARY_3_4_WORKOUTS:
                 multiplier = 1.5;
                 break;
-            case WorkType.PHYSICAL_WORK_3_4_WORKOUTS:
+            case WorkType.PHYSICAL_WORK:
                 multiplier = 1.6;
+                break;
+            case WorkType.PHYSICAL_WORK_3_4_WORKOUTS:
+                multiplier = 1.7;
                 break;
             default:
                 break;
         }
 
         if (formState.weightReductionOption === 'reduce') {
-            ppm -= 200;
+            ppm -= 300;
         } else if (formState.weightReductionOption === 'calculate') {
-            ppm += 200;
+            ppm += 300;
         }
 
         const result = ppm * multiplier;
@@ -111,27 +113,27 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
     return (
         <Container maxWidth="sm" sx={{ marginTop: '20px', backgroundColor: '#F8F9FD', borderRadius: '40px', padding: '25px 35px', border: '5px solid #fff', boxShadow: '0px 30px 30px -20px rgba(133, 189, 215, 0.8784313725)' }}>
             <Typography variant="h4" align="center" gutterBottom>
-                Wylicz swoje zapotrzebowanie kaloryczne, aby dobrać odpowiednią dla siebie kaloryczność.
+                {t('calculateCaloricNeed')}
             </Typography>
             <Box component="form" sx={{ marginTop: '20px' }}>
                 <FormControl fullWidth variant="outlined" margin="normal" error={errors?.includes(ErrorType.GENDER_ERROR)}>
-                    <InputLabel id="gender-label">Płeć</InputLabel>
+                    <InputLabel id="gender-label">{t('gender')}</InputLabel>
                     <Select
                         labelId="gender-label"
                         id="gender-select"
                         value={formState.gender}
                         onChange={(e) => setFormState(prevState => ({...prevState, gender: e.target.value}))}
-                        label="Płeć"
+                        label={t('gender')}
                         required
                     >
-                        <MenuItem value="women">Kobieta</MenuItem>
-                        <MenuItem value="men">Mężczyzna</MenuItem>
+                        <MenuItem value="women">{t('women')}</MenuItem>
+                        <MenuItem value="men">{t('men')}</MenuItem>
                     </Select>
-                    {errors?.includes(ErrorType.GENDER_ERROR) ? <FormHelperText>To pole jest wymagane</FormHelperText>: null}
+                    {errors?.includes(ErrorType.GENDER_ERROR) ? <FormHelperText>{t('requiredField')}</FormHelperText>: null}
                 </FormControl>
                 <TextField
                     type="number"
-                    label="Waga na czczo (kg)"
+                    label={t('weight')}
                     value={formState.weight}
                     onChange={(e) => setFormState(prevState => ({...prevState, weight: e.target.value}))}
                     variant="outlined"
@@ -139,11 +141,11 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
                     margin="normal"
                     required
                     error={errors?.includes(ErrorType.WEIGHT_ERROR)}
-                    helperText={errors?.includes(ErrorType.WEIGHT_ERROR) ? "Waga musi być większa niż 0" : ""}
+                    helperText={errors?.includes(ErrorType.WEIGHT_ERROR) ? t('weightMustBeGreaterThan0') : ""}
                 />
                 <TextField
                     type="number"
-                    label="Wzrost (cm)"
+                    label={t('height')}
                     value={formState.height}
                     onChange={(e) => setFormState(prevState => ({...prevState, height: e.target.value}))}
                     variant="outlined"
@@ -151,11 +153,11 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
                     margin="normal"
                     required
                     error={errors?.includes(ErrorType.HEIGHT_ERROR)}
-                    helperText={errors?.includes(ErrorType.HEIGHT_ERROR) ? "Wzrost musi być większy niż 0" : ""}
+                    helperText={errors?.includes(ErrorType.HEIGHT_ERROR) ? t('heightMustBeGreaterThan0') : ""}
                 />
                 <TextField
                     type="number"
-                    label="Wiek (w latach)"
+                    label={t('height')}
                     value={formState.age}
                     onChange={(e) => setFormState(prevState => ({...prevState, age: e.target.value}))}
                     variant="outlined"
@@ -163,25 +165,25 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
                     margin="normal"
                     required
                     error={errors?.includes(ErrorType.AGE_ERROR)}
-                    helperText={errors?.includes(ErrorType.AGE_ERROR) ? "Wiek musi być większy niż 0" : ""}
+                    helperText={errors?.includes(ErrorType.AGE_ERROR) ? t('ageMustBeGreaterThan0') : ""}
                 />
                 <FormControl fullWidth variant="outlined" margin="normal" error={errors?.includes(ErrorType.WORK_TYPE_ERROR)}>
-                    <InputLabel id="work-type-label">Aktywność</InputLabel>
+                    <InputLabel id="work-type-label">{t('activity')}</InputLabel>
                     <Select
                         labelId="work-type-label"
                         id="work-type-select"
                         value={formState.workType}
                         onChange={(e) => setFormState(prevState => ({...prevState, workType: e.target.value}))}
-                        label="Aktywność"
+                        label={t('activity')}
                         required
                     >
-                        <MenuItem value="Praca siedząca">Praca siedząca, niska aktywność</MenuItem>
-                        <MenuItem value="Praca siedząca 1-2 treningi">Praca siedząca + 1-2 treningi</MenuItem>
-                        <MenuItem value="Praca siedząca 3-4 treningi">Praca siedząca + 3-4 treningi</MenuItem>
-                        <MenuItem value="Praca fizyczna">Praca fizyczna</MenuItem>
-                        <MenuItem value="Praca fizyczna, 3-4 treningi">Praca fizyczna, 3-4 treningi</MenuItem>
+                        <MenuItem value="Praca siedząca">{t('sedentary')}</MenuItem>
+                        <MenuItem value="Praca siedząca 1-2 treningi">{t('sedentaryWith12Workouts')}</MenuItem>
+                        <MenuItem value="Praca siedząca 3-4 treningi">{t('sedentaryWith34Workouts')}</MenuItem>
+                        <MenuItem value="Praca fizyczna">{t('physicalWork')}</MenuItem>
+                        <MenuItem value="Praca fizyczna, 3-4 treningi">{t('physicalWorkWith34Workouts')}</MenuItem>
                     </Select>
-                    {errors?.includes(ErrorType.WORK_TYPE_ERROR) && <FormHelperText>To pole jest wymagane</FormHelperText>}
+                    {errors?.includes(ErrorType.WORK_TYPE_ERROR) && <FormHelperText>{t('requiredField')}</FormHelperText>}
                 </FormControl>
                 <FormControl component="fieldset" margin="normal">
                     <RadioGroup
@@ -190,14 +192,14 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
                         value={formState.weightReductionOption}
                         onChange={(e) => setFormState(prevState => ({...prevState, weightReductionOption: e.target.value}))}
                     >
-                        <FormControlLabel value="reduce" control={<Radio />} label="Chcę zredukować masę ciała" />
-                        <FormControlLabel value="calculate" control={<Radio />} label="Przybranie na masie" />
-                        <FormControlLabel value="maintain" control={<Radio />} label="Utrzymanie" />
+                        <FormControlLabel value="reduce" control={<Radio />} label={t('reduceBodyMass')} />
+                        <FormControlLabel value="calculate" control={<Radio />} label={t('calculateBodyMass')} />
+                        <FormControlLabel value="maintain" control={<Radio />} label={t('maintain')} />
                     </RadioGroup>
                 </FormControl>
 
                 <Button variant="contained" color="primary" onClick={calculatePpm} fullWidth sx={{ marginTop: '20px' }}>
-                    Przelicz
+                    {t('calculate')}
                 </Button>
             </Box>
         </Container>
