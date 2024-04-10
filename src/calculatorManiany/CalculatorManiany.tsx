@@ -14,6 +14,8 @@ import {
 import _ from "lodash";
 import {ErrorType, FormState, GenderType, initialState, WorkType} from "./config";
 import {useTranslation} from "react-i18next";
+import './styles/styles.css';
+
 
 interface CalculatorManianyProps {
     onCalculate: (result: number) => void;
@@ -112,7 +114,13 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
 
     return (
         <Container maxWidth="sm" sx={{ marginTop: '20px', backgroundColor: '#F8F9FD', borderRadius: '40px', padding: '25px 35px', border: '5px solid #fff', boxShadow: '0px 30px 30px -20px rgba(133, 189, 215, 0.8784313725)' }}>
-            <Typography variant="h4" align="center" gutterBottom>
+            <Typography variant="h4" align="center" gutterBottom sx={{
+                padding: '30px',
+                color: '#000000',
+                fontFamily: '"Bodoni Moda", sans-serif',
+                fontSize: '30px',
+                fontWeight: 500,
+            }}>
                 {t('calculateCaloricNeed')}
             </Typography>
             <Box component="form" sx={{ marginTop: '20px' }}>
@@ -192,13 +200,25 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
                         value={formState.weightReductionOption}
                         onChange={(e) => setFormState(prevState => ({...prevState, weightReductionOption: e.target.value}))}
                     >
-                        <FormControlLabel value="reduce" control={<Radio />} label={t('reduceBodyMass')} />
-                        <FormControlLabel value="calculate" control={<Radio />} label={t('calculateBodyMass')} />
-                        <FormControlLabel value="maintain" control={<Radio />} label={t('maintain')} />
+                        <FormControlLabel value="reduce" control={<Radio sx={{ '&.Mui-checked': { color: '#ea4070' } }} />} label={t('reduceBodyMass')} />
+                        <FormControlLabel value="calculate" control={<Radio sx={{ '&.Mui-checked': { color: '#ea4070' } }} />} label={t('calculateBodyMass')} />
+                        <FormControlLabel value="maintain" control={<Radio sx={{ '&.Mui-checked': { color: '#ea4070' } }} />} label={t('maintain')} />
                     </RadioGroup>
                 </FormControl>
-
-                <Button variant="contained" color="primary" onClick={calculatePpm} fullWidth sx={{ marginTop: '20px' }}>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={calculatePpm}
+                    fullWidth
+                    sx={{
+                        marginTop: '20px',
+                        backgroundColor: '#ea4070',
+                        color: 'white',
+                        '&:hover': {
+                            backgroundColor: '#d03060',
+                        },
+                    }}
+                >
                     {t('calculate')}
                 </Button>
             </Box>
