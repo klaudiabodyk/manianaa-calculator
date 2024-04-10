@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Bodoni Moda';
+    src: url('/src/calculatorManiany/assets/BodoniModa-VariableFont_opsz,wght.ttf') format('truetype');
+}
+.calculator-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribute space between items */
+    padding: 30px;
+    background-image: url('/src/calculatorManiany/assets/sparkles_pink_sweets.png');
+    background-size: cover;
+    background-position: center;
+}
