@@ -12,3 +12,14 @@
     background-size: cover;
     background-position: center;
 }
+.ebook-button {
+    padding:10px 15px 10px 15px;
+
+    background-color: #ea4070;
+    color: #ffffff;
+        &:hover {
+            background-color: #d03060
+        }
+    border-radius: 4px;
+    text-decoration: none;
+}
