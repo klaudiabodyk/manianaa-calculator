@@ -115,11 +115,11 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
     return (
         <Container maxWidth="sm" sx={{ marginTop: '20px', backgroundColor: '#F8F9FD', borderRadius: '40px', padding: '25px 35px', border: '5px solid #fff', boxShadow: '0px 30px 30px -20px rgba(133, 189, 215, 0.8784313725)' }}>
             <Typography variant="h4" align="center" gutterBottom sx={{
-                padding: '30px',
+                padding: '20px',
                 color: '#000000',
-                fontFamily: '"Bodoni Moda", sans-serif',
-                fontSize: '30px',
-                fontWeight: 500,
+                fontFamily: '"Libre Bodoni", serif',
+                fontSize: '34px',
+                fontWeight: '400',
             }}>
                 {t('calculateCaloricNeed')}
             </Typography>
@@ -147,6 +147,7 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
                     variant="outlined"
                     fullWidth
                     margin="normal"
+                    inputProps={{ min: "0" }}
                     required
                     error={errors?.includes(ErrorType.WEIGHT_ERROR)}
                     helperText={errors?.includes(ErrorType.WEIGHT_ERROR) ? t('weightMustBeGreaterThan0') : ""}
@@ -159,6 +160,7 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
                     variant="outlined"
                     fullWidth
                     margin="normal"
+                    inputProps={{ min: "0" }}
                     required
                     error={errors?.includes(ErrorType.HEIGHT_ERROR)}
                     helperText={errors?.includes(ErrorType.HEIGHT_ERROR) ? t('heightMustBeGreaterThan0') : ""}
@@ -171,6 +173,7 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
                     variant="outlined"
                     fullWidth
                     margin="normal"
+                    inputProps={{ min: "0" }}
                     required
                     error={errors?.includes(ErrorType.AGE_ERROR)}
                     helperText={errors?.includes(ErrorType.AGE_ERROR) ? t('ageMustBeGreaterThan0') : ""}
