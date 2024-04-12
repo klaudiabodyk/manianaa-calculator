@@ -16,7 +16,7 @@ const resources = {
             "sedentaryWith12Workouts": "Praca siedząca + 1-2 treningi",
             "sedentaryWith34Workouts": "Praca siedząca + 3-4 treningi",
             "physicalWork": "Praca fizyczna",
-            "physicalWorkWith34Workouts": "Praca fizyczna, 3-4 treningi",
+            "physicalWorkWith34Workouts": "Praca fizyczna + 3-4 treningi",
             "reduceBodyMass": "Chcę zredukować masę ciała",
             "calculateBodyMass": "Przybranie na masie",
             "maintain": "Utrzymanie",
