@@ -12,7 +12,7 @@ const resources = {
             "height": "Wzrost (cm)",
             "age": "Wiek (w latach)",
             "activity": "Aktywność",
-            "sedentary": "Praca siedząca, niska aktywność",
+            "sedentary": "Brak aktywności",
             "sedentaryWith12Workouts": "Praca siedząca + 1-2 treningi",
             "sedentaryWith34Workouts": "Praca siedząca + 3-4 treningi",
             "physicalWork": "Praca fizyczna",
