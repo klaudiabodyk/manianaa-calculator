@@ -110,6 +110,10 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
         if (errors.length === 0) {
             onCalculate(clonedResult);
         }
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+        });
     };
 
     return (
