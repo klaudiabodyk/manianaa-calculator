@@ -1,46 +1,35 @@
-# Getting Started with Create React App
+# Caloric Needs Calculator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
 
-## Available Scripts
+Welcome to the Caloric Needs Calculator! This tool is designed to help you determine your daily caloric needs based on your personal information and fitness goals. Whether you're looking to reduce body mass, gain weight, or maintain your current weight, we've got you covered.
 
-In the project directory, you can run:
+## How to Use
 
-### `npm start`
+1. **Enter Your Details**: First, you'll need to provide some basic information about yourself. This includes:
+    - **Gender**: Your gender is important as it affects your basal metabolic rate.
+    - **Weight (kg)**: Your current weight is a crucial factor in calculating your caloric needs.
+    - **Height (cm)**: Your height helps in estimating your body composition.
+    - **Age (years)**: Age is a key factor in determining your metabolic rate.
+    - **Activity Level**: Your daily activity level can significantly impact your caloric needs.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+2. **Choose Your Goal**: Next, select your fitness goal from the following options:
+    - **Reduce Body Mass**: If you're looking to lose weight, this option will calculate your caloric needs accordingly.
+    - **Gain Weight**: If you're aiming to gain weight, this tool will help you find the right caloric intake.
+    - **Maintain Current Weight**: If you're looking to maintain your current weight, this option will provide you with the caloric needs to achieve that goal.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+3. **Calculate Your Caloric Needs**: Once you've entered your details and chosen your goal, the calculator will do the math for you. It will estimate your daily caloric needs based on the information provided.
 
-### `npm test`
+4. **Achieve Your Goal**: With your daily caloric needs calculated, you can now plan your diet and exercise routine to achieve your fitness goal.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+To begin, simply click on the "Start Calculation" button and follow the on-screen instructions. If you have any questions or need further assistance, feel free to reach out to us.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Additional Information
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+For more information about how caloric needs are calculated and how to use the results to achieve your fitness goals, please refer to our [FAQ](link_to_faq_section) or contact us directly.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Thank you for using the Caloric Needs Calculator! If you have any feedback or suggestions, we'd love to hear from you.
