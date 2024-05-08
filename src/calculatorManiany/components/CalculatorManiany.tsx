@@ -1,27 +1,21 @@
 import React, {useEffect, useState} from 'react';
 import {
-    Container,
-    TextField,
-    Button,
-    Typography,
     Box,
+    Button,
+    Container,
     FormControl,
+    FormControlLabel,
+    FormHelperText,
     InputLabel,
-    Select,
     MenuItem,
-    FormHelperText, FormControlLabel, RadioGroup, Radio
+    Radio,
+    RadioGroup,
+    Select,
+    TextField,
+    Typography
 } from '@mui/material';
 import _ from "lodash";
-import {
-    ERROR,
-    ErrorType,
-    FormState,
-    GenderType,
-    initialState,
-    keysToCheck,
-    WeightReductionOption,
-    WorkType
-} from "../config";
+import {ErrorType, FormState, GenderType, initialState, WeightReductionOption, WorkType} from "../config";
 import {useTranslation} from "react-i18next";
 import '../styles/styles.css';
 
