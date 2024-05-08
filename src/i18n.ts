@@ -27,6 +27,7 @@ const resources = {
             "ageMustBeGreaterThan0": "Wiek musi być większy niż 0",
             "activityRequired": "Aktywność jest wymagana",
             "buyEbook": "KUP E-BOOK",
+            "kcal": " kcal",
         }
     },
 };
