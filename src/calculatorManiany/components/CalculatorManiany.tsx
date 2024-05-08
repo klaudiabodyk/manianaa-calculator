@@ -61,6 +61,7 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
             newErrors = newErrors.filter(error => error !== ErrorType.WORK_TYPE_ERROR);
         }
         setErrors(newErrors);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [formState]);
 
     const handleErrors = (formState: FormState, errors: any) => {
