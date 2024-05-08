@@ -1,8 +1,8 @@
 import React, {useState} from "react";
-import CalculatorManiany from "./CalculatorManiany";
+import CalculatorManiany from "../components/CalculatorManiany";
 import {Box, Typography} from "@mui/material";
-import i18n from '../i18n';
-import './styles/styles.css';
+import i18n from '../../i18n';
+import '../styles/styles.css';
 import {Link} from "react-router-dom";
 
 const CalculatorContainer = () => {
@@ -24,7 +24,7 @@ const CalculatorContainer = () => {
                     background: '#f8f9fd',
                     borderRadius: '15px',
                 }}>
-                    {i18n.t('finalScore')} {result} kcal
+                    {i18n.t('finalScore')} {result} {i18n.t('kcal')}
                 </Typography>
                 <Box
                     sx={{
@@ -35,6 +35,7 @@ const CalculatorContainer = () => {
                 >
                     <Link
                         className={'ebook-button'}
+                        dataTest-id={'ebook-button'}
                         to={'https://manianaa.com/produkt/redukcyjny-ebook'}
                     >
                         {i18n.t('buyEbook')}

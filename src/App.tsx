@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
-import CalculatorContainer from "./calculatorManiany/CalculatorContainer";
+import CalculatorContainer from "./calculatorManiany/container/CalculatorContainer";
 
 const App = () => {
     return (

@@ -12,7 +12,6 @@ export enum ErrorType {
     AGE_ERROR = 'ageError',
     HEIGHT_ERROR = 'heightError',
     WORK_TYPE_ERROR = 'workTypeError',
-    RADIO_ERROR = 'radioError'
 }
 
 export const initialState: FormState = {
@@ -35,4 +34,12 @@ export enum WorkType {
     SEDENTARY_3_4_WORKOUTS = "Praca siedząca 3-4 treningi",
     PHYSICAL_WORK = "Praca fizyczna",
     PHYSICAL_WORK_3_4_WORKOUTS = "Praca fizyczna, 3-4 treningi"
+}
+export const keysToCheck = ['gender', 'weight', 'height', 'age', 'workType'];
+
+export const ERROR = '_ERROR'
+
+export enum WeightReductionOption {
+    REDUCE = 'reduce',
+    OVERAGE = 'overage'
 }

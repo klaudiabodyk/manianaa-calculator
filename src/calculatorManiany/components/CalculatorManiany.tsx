@@ -1,31 +1,47 @@
 import React, {useEffect, useState} from 'react';
 import {
-    Container,
-    TextField,
-    Button,
-    Typography,
     Box,
+    Button,
+    Container,
     FormControl,
+    FormControlLabel,
+    FormHelperText,
     InputLabel,
-    Select,
     MenuItem,
-    FormHelperText, FormControlLabel, RadioGroup, Radio
+    Radio,
+    RadioGroup,
+    Select,
+    TextField,
+    Typography
 } from '@mui/material';
 import _ from "lodash";
-import {ErrorType, FormState, GenderType, initialState, WorkType} from "./config";
+import {ErrorType, FormState, GenderType, initialState, WeightReductionOption, WorkType} from "../config";
 import {useTranslation} from "react-i18next";
-import './styles/styles.css';
+import '../styles/styles.css';
 
 
 interface CalculatorManianyProps {
     onCalculate: (result: number) => void;
 }
-
+/**
+ * A calculator component for calculating personalized caloric needs based on user input.
+ * It includes form fields for gender, weight, height, age, work type, and weight reduction option.
+ * The component validates the input and calculates the caloric need based on the provided data.
+ */
 const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
     const { t } = useTranslation();
     const [formState, setFormState] = useState<FormState>(initialState);
     const [errors, setErrors] = useState<string[]>([]);
 
+/**
+ * Updates the errors array based on the current form state.
+ * Removes any errors that are no longer applicable due to changes in the form state.
+ *
+ * @param {FormState} formState - The current state of the form.
+ * @param {any[]} errors - The current array of errors.
+ * @param {string[]} keysToCheck - An array of keys to check in the form state.
+ * @param {Function} setErrors - A function to update the errors state.
+ */
 
     useEffect(() => {
         let newErrors = _.cloneDeep(errors);
@@ -45,25 +61,27 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
             newErrors = newErrors.filter(error => error !== ErrorType.WORK_TYPE_ERROR);
         }
         setErrors(newErrors);
-    }, [formState, errors]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [formState]);
 
     const handleErrors = (formState: FormState, errors: any) => {
         let newErrors = _.cloneDeep(errors);
-        if (!formState.gender) {
-            newErrors.push(ErrorType.GENDER_ERROR);
-        }
-        if (!formState.weight || Number(formState.weight) < 1) {
-            newErrors.push(ErrorType.WEIGHT_ERROR);
-        }
-        if (!formState.height || Number(formState.height) < 1) {
-            newErrors.push(ErrorType.HEIGHT_ERROR);
-        }
-        if (!formState.age || Number(formState.age) < 1) {
-            newErrors.push(ErrorType.AGE_ERROR);
-        }
-        if (!formState.workType) {
-            newErrors.push(ErrorType.WORK_TYPE_ERROR);
-        }
+
+        const errorChecks = {
+            gender: () => !formState.gender && ErrorType.GENDER_ERROR,
+            weight: () => (!formState.weight || Number(formState.weight) < 1) && ErrorType.WEIGHT_ERROR,
+            height: () => (!formState.height || Number(formState.height) < 1) && ErrorType.HEIGHT_ERROR,
+            age: () => (!formState.age || Number(formState.age) < 1) && ErrorType.AGE_ERROR,
+            workType: () => !formState.workType && ErrorType.WORK_TYPE_ERROR,
+        };
+
+        Object.values(errorChecks).forEach(check => {
+            const error = check();
+            if (error) {
+                newErrors.push(error);
+            }
+        });
+
         setErrors(newErrors);
     };
 
@@ -77,7 +95,6 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
         } else if (formState.gender === GenderType.MEN) {
             ppm = (10 * weightValue) + (6.25 * heightValue) - (5 * ageValue) + 5;
         }
-
         let multiplier = 1;
         switch (formState.workType) {
             case WorkType.SEDENTARY:
@@ -101,9 +118,9 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
 
         const result = ppm * multiplier;
         let clonedResult = _.cloneDeep(result)
-        if (formState.weightReductionOption === 'reduce') {
+        if (WeightReductionOption.REDUCE === formState.weightReductionOption) {
             clonedResult -= 300;
-        } else if (formState.weightReductionOption === 'calculate') {
+        } else if (WeightReductionOption.OVERAGE === formState.weightReductionOption) {
             clonedResult += 300;
         }
         handleErrors(formState, errors);
@@ -192,11 +209,11 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
                         label={t('activity')}
                         required
                     >
-                        <MenuItem value="Praca siedząca">{t('sedentary')}</MenuItem>
-                        <MenuItem value="Praca siedząca 1-2 treningi">{t('sedentaryWith12Workouts')}</MenuItem>
-                        <MenuItem value="Praca siedząca 3-4 treningi">{t('sedentaryWith34Workouts')}</MenuItem>
-                        <MenuItem value="Praca fizyczna">{t('physicalWork')}</MenuItem>
-                        <MenuItem value="Praca fizyczna, 3-4 treningi">{t('physicalWorkWith34Workouts')}</MenuItem>
+                        <MenuItem value={WorkType.SEDENTARY}>{t('sedentary')}</MenuItem>
+                        <MenuItem value={WorkType.SEDENTARY_1_2_WORKOUTS}>{t('sedentaryWith12Workouts')}</MenuItem>
+                        <MenuItem value={WorkType.SEDENTARY_3_4_WORKOUTS}>{t('sedentaryWith34Workouts')}</MenuItem>
+                        <MenuItem value={WorkType.PHYSICAL_WORK}>{t('physicalWork')}</MenuItem>
+                        <MenuItem value={WorkType.PHYSICAL_WORK_3_4_WORKOUTS}>{t('physicalWorkWith34Workouts')}</MenuItem>
                     </Select>
                     {errors?.includes(ErrorType.WORK_TYPE_ERROR) && <FormHelperText>{t('requiredField')}</FormHelperText>}
                 </FormControl>
@@ -208,7 +225,7 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
                         onChange={(e) => setFormState(prevState => ({...prevState, weightReductionOption: e.target.value}))}
                     >
                         <FormControlLabel value="reduce" control={<Radio sx={{ '&.Mui-checked': { color: '#ea4070' } }} />} label={t('reduceBodyMass')} />
-                        <FormControlLabel value="calculate" control={<Radio sx={{ '&.Mui-checked': { color: '#ea4070' } }} />} label={t('calculateBodyMass')} />
+                        <FormControlLabel value="overage" control={<Radio sx={{ '&.Mui-checked': { color: '#ea4070' } }} />} label={t('calculateBodyMass')} />
                         <FormControlLabel value="maintain" control={<Radio sx={{ '&.Mui-checked': { color: '#ea4070' } }} />} label={t('maintain')} />
                     </RadioGroup>
                 </FormControl>
