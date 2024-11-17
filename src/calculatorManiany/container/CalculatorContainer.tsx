@@ -36,7 +36,7 @@ const CalculatorContainer = () => {
                     <Link
                         className={'ebook-button'}
                         dataTest-id={'ebook-button'}
-                        to={'https://manianaa.com/produkt/nowosc-jesienna-redukcja'}
+                        to={'https://manianaa.com/produkt/nowosc-zrozumiec-niski-indeks-glikemiczny-jako-glowny-i-zastanawiam-sie-czy-zmiesci-sie-7-dniowy-jadlospis-wprowadzenie'}
                     >
                         {i18n.t('buyEbook')}
                     </Link>
