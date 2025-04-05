@@ -36,7 +36,7 @@ const CalculatorContainer = () => {
                     <Link
                         className={'ebook-button'}
                         dataTest-id={'ebook-button'}
-                        to={'https://manianaa.com/produkt/tym-razem-sie-uda'}
+                        to={'https://manianaa.com/produkt/tym-razem-sie-uda-2-0'}
                     >
                         {i18n.t('buyEbook')}
                     </Link>
