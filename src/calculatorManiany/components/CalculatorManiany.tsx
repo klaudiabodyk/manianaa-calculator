@@ -98,7 +98,7 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
         let multiplier = 1;
         switch (formState.workType) {
             case WorkType.SEDENTARY:
-                multiplier = 1.3;
+                multiplier = 1.35;
                 break;
             case WorkType.SEDENTARY_1_2_WORKOUTS:
                 multiplier = 1.4;
@@ -110,7 +110,7 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
                 multiplier = 1.6;
                 break;
             case WorkType.PHYSICAL_WORK_3_4_WORKOUTS:
-                multiplier = 1.7;
+                multiplier = 1.8;
                 break;
             default:
                 break;
