@@ -33,12 +33,19 @@ const CalculatorContainer = () => {
                         alignItems: 'center',
                     }}
                 >
+                    {/*<Link*/}
+                    {/*    className={'ebook-button'}*/}
+                    {/*    dataTest-id={'ebook-button'}*/}
+                    {/*    to={'https://manianaa.com/produkt/pakiet-tym-razem-sie-uda-2-0-redukcyjne-obiady-20-minut'}*/}
+                    {/*>*/}
+                    {/*    {i18n.t('buyEbook')}*/}
+                    {/*</Link>*/}
                     <Link
                         className={'ebook-button'}
-                        dataTest-id={'ebook-button'}
-                        to={'https://manianaa.com/produkt/pakiet-tym-razem-sie-uda-2-0-redukcyjne-obiady-20-minut'}
+                        dataTest-id={'goToApp'}
+                        to={'https://manianaa.com/produkt/dieta-maniany-w-aplikacji'}
                     >
-                        {i18n.t('buyEbook')}
+                        {i18n.t('goToApp')}
                     </Link>
                 </Box>
             </div>
