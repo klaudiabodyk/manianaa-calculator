@@ -229,6 +229,7 @@ const CalculatorManiany = ({ onCalculate }: CalculatorManianyProps) => {
                         <FormControlLabel value="maintain" control={<Radio sx={{ '&.Mui-checked': { color: '#ea4070' } }} />} label={t('maintain')} />
                     </RadioGroup>
                 </FormControl>
+                <p>Kliknij przycisk "Przelicz" aby wyliczyć zapotrzebowanie</p>
                 <Button
                     variant="contained"
                     color="primary"
