@@ -1,5 +1,5 @@
 # Caloric Needs Calculator
-
+check here: https://kalkulator.manianaa.com
 ## Introduction
 
 Welcome to the Caloric Needs Calculator! This tool is designed to help you determine your daily caloric needs based on your personal information and fitness goals. Whether you're looking to reduce body mass, gain weight, or maintain your current weight, we've got you covered.
