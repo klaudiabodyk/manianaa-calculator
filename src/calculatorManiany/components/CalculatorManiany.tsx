@@ -32,7 +32,7 @@ const CalculatorManiany = () => {
 
   return (
     <Container
-      maxWidth="sm"
+      maxWidth="md"
       sx={{
         marginTop: '10px',
         backgroundColor: '#F8F9FD',
@@ -112,8 +112,8 @@ const CalculatorManiany = () => {
               onChange={(value) => setFormState((prev) => ({ ...prev, gender: value }))}
               error={errors.includes(ErrorType.GENDER_ERROR)}
             />
-            <Box sx={{ display: 'flex', gap: 2 }}>
-              <Box sx={{ flex: 1 }}>
+            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: { lg: 2 } }}>
+              <Box sx={{ width: { xs: '100%', sm: 'auto' }, flex: { xs: 'none', sm: 1 } }}>
                 <NumberInput
                   label={t('weight')}
                   value={formState.weight}
@@ -122,7 +122,7 @@ const CalculatorManiany = () => {
                   helperText={t('weightMustBeGreaterThan0')}
                 />
               </Box>
-              <Box sx={{ flex: 1 }}>
+              <Box sx={{ width: { xs: '100%', sm: 'auto' }, flex: { xs: 'none', sm: 1 } }}>
                 <NumberInput
                   label={t('height')}
                   value={formState.height}
@@ -131,7 +131,7 @@ const CalculatorManiany = () => {
                   helperText={t('heightMustBeGreaterThan0')}
                 />
               </Box>
-              <Box sx={{ flex: 1 }}>
+              <Box sx={{ width: { xs: '100%', sm: 'auto' }, flex: { xs: 'none', sm: 1 } }}>
                 <NumberInput
                   label={t('age')}
                   value={formState.age}
