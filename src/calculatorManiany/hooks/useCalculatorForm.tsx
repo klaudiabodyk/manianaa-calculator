@@ -14,23 +14,25 @@ export const useCalculatorForm = (onCalculate: (result: number) => void) => {
   const [errors, setErrors] = useState<string[]>([])
 
   useEffect(() => {
-    let newErrors = _.cloneDeep(errors)
-    if (formState.gender) {
-      newErrors = newErrors.filter((error: string) => error !== ErrorType.GENDER_ERROR)
-    }
-    if (formState.weight) {
-      newErrors = newErrors.filter((error: string) => error !== ErrorType.WEIGHT_ERROR)
-    }
-    if (formState.height) {
-      newErrors = newErrors.filter((error: string) => error !== ErrorType.HEIGHT_ERROR)
-    }
-    if (formState.age) {
-      newErrors = newErrors.filter((error: string) => error !== ErrorType.AGE_ERROR)
-    }
-    if (formState.workType) {
-      newErrors = newErrors.filter((error: string) => error !== ErrorType.WORK_TYPE_ERROR)
-    }
-    setErrors(newErrors)
+    setErrors(prevErrors => {
+      let newErrors = _.cloneDeep(prevErrors)
+      if (formState.gender) {
+        newErrors = newErrors.filter((error: string) => error !== ErrorType.GENDER_ERROR)
+      }
+      if (formState.weight) {
+        newErrors = newErrors.filter((error: string) => error !== ErrorType.WEIGHT_ERROR)
+      }
+      if (formState.height) {
+        newErrors = newErrors.filter((error: string) => error !== ErrorType.HEIGHT_ERROR)
+      }
+      if (formState.age) {
+        newErrors = newErrors.filter((error: string) => error !== ErrorType.AGE_ERROR)
+      }
+      if (formState.workType) {
+        newErrors = newErrors.filter((error: string) => error !== ErrorType.WORK_TYPE_ERROR)
+      }
+      return newErrors
+    })
   }, [formState])
 
   const validateForm = (currentFormState: FormState): string[] => {
