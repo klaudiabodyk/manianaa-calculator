@@ -7,16 +7,16 @@ Welcome to the Caloric Needs Calculator! This tool is designed to help you deter
 ## How to Use
 
 1. **Enter Your Details**: First, you'll need to provide some basic information about yourself. This includes:
-    - **Gender**: Your gender is important as it affects your basal metabolic rate.
-    - **Weight (kg)**: Your current weight is a crucial factor in calculating your caloric needs.
-    - **Height (cm)**: Your height helps in estimating your body composition.
-    - **Age (years)**: Age is a key factor in determining your metabolic rate.
-    - **Activity Level**: Your daily activity level can significantly impact your caloric needs.
+   - **Gender**: Your gender is important as it affects your basal metabolic rate.
+   - **Weight (kg)**: Your current weight is a crucial factor in calculating your caloric needs.
+   - **Height (cm)**: Your height helps in estimating your body composition.
+   - **Age (years)**: Age is a key factor in determining your metabolic rate.
+   - **Activity Level**: Your daily activity level can significantly impact your caloric needs.
 
 2. **Choose Your Goal**: Next, select your fitness goal from the following options:
-    - **Reduce Body Mass**: If you're looking to lose weight, this option will calculate your caloric needs accordingly.
-    - **Gain Weight**: If you're aiming to gain weight, this tool will help you find the right caloric intake.
-    - **Maintain Current Weight**: If you're looking to maintain your current weight, this option will provide you with the caloric needs to achieve that goal.
+   - **Reduce Body Mass**: If you're looking to lose weight, this option will calculate your caloric needs accordingly.
+   - **Gain Weight**: If you're aiming to gain weight, this tool will help you find the right caloric intake.
+   - **Maintain Current Weight**: If you're looking to maintain your current weight, this option will provide you with the caloric needs to achieve that goal.
 
 3. **Calculate Your Caloric Needs**: Once you've entered your details and chosen your goal, the calculator will do the math for you. It will estimate your daily caloric needs based on the information provided.
 

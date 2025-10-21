@@ -3,14 +3,14 @@
     src: url('/src/calculatorManiany/assets/BodoniModa-VariableFont_opsz,wght.ttf') format('truetype');
 }
 .calculator-container {
-    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Distribute space between items */
-    padding: 30px;
+    justify-content: flex-start;
     background-image: url('/src/calculatorManiany/assets/sparkles_pink_sweets.png');
+    min-height: 100vh;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
 }
 .ebook-button {
     padding:10px 15px 10px 15px;
@@ -22,4 +22,25 @@
         }
     border-radius: 4px;
     text-decoration: none;
+}
+
+.result-display {
+    margin-top: 10px;
+    padding: 15px;
+    color: #000000;
+    font-family: "Libre Bodoni", serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 30px;
+    text-transform: uppercase;
+    background: #f8f9fd;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.action-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
