@@ -1,18 +1,18 @@
 import { render, screen } from '@testing-library/react'
 import CalculatorContainer from '../container/CalculatorContainer'
-import { MemoryRouter } from 'react-router-dom'
 
 describe('Calculator Container', () => {
-  it('renders without crashing', () => {
-    render(
-      <MemoryRouter>
-        <CalculatorContainer />
-      </MemoryRouter>
-    )
+  it('renders the page heading', () => {
+    render(<CalculatorContainer />)
     expect(
-      screen.getByText(
-        'Wylicz swoje zapotrzebowanie kaloryczne, aby dobrać odpowiednią dla siebie kaloryczność.'
-      )
+      screen.getByRole('heading', { name: 'Kalkulator zapotrzebowania kalorycznego' })
+    ).toBeInTheDocument()
+  })
+
+  it('renders the hero intro text', () => {
+    render(<CalculatorContainer />)
+    expect(
+      screen.getByText(/Sprawdź, ile kalorii jeść dziennie/)
     ).toBeInTheDocument()
   })
 })

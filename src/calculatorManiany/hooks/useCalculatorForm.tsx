@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import {
-  ErrorType,
-  FormState,
-  initialState,
-} from '../config'
+import { ErrorType, FormState, initialState } from '../config'
 import { useTranslation } from 'react-i18next'
 import { calculatePpmValue } from '../utils/calculateUtils'
-import _ from 'lodash';
 
 export const useCalculatorForm = (onCalculate: (result: number) => void) => {
   const { t } = useTranslation()
@@ -14,22 +9,25 @@ export const useCalculatorForm = (onCalculate: (result: number) => void) => {
   const [errors, setErrors] = useState<string[]>([])
 
   useEffect(() => {
-    setErrors(prevErrors => {
-      let newErrors = _.cloneDeep(prevErrors)
+    setErrors((prevErrors) => {
+      let newErrors = [...prevErrors]
       if (formState.gender) {
-        newErrors = newErrors.filter((error: string) => error !== ErrorType.GENDER_ERROR)
+        newErrors = newErrors.filter((e) => e !== ErrorType.GENDER_ERROR)
       }
       if (formState.weight) {
-        newErrors = newErrors.filter((error: string) => error !== ErrorType.WEIGHT_ERROR)
+        newErrors = newErrors.filter((e) => e !== ErrorType.WEIGHT_ERROR)
       }
       if (formState.height) {
-        newErrors = newErrors.filter((error: string) => error !== ErrorType.HEIGHT_ERROR)
+        newErrors = newErrors.filter((e) => e !== ErrorType.HEIGHT_ERROR)
       }
       if (formState.age) {
-        newErrors = newErrors.filter((error: string) => error !== ErrorType.AGE_ERROR)
+        newErrors = newErrors.filter((e) => e !== ErrorType.AGE_ERROR)
       }
-      if (formState.workType) {
-        newErrors = newErrors.filter((error: string) => error !== ErrorType.WORK_TYPE_ERROR)
+      if (formState.activityLevel) {
+        newErrors = newErrors.filter((e) => e !== ErrorType.ACTIVITY_LEVEL_ERROR)
+      }
+      if (formState.goal) {
+        newErrors = newErrors.filter((e) => e !== ErrorType.GOAL_ERROR)
       }
       return newErrors
     })
@@ -49,8 +47,11 @@ export const useCalculatorForm = (onCalculate: (result: number) => void) => {
     if (!currentFormState.age || Number(currentFormState.age) < 1) {
       nextErrors.push(ErrorType.AGE_ERROR)
     }
-    if (!currentFormState.workType) {
-      nextErrors.push(ErrorType.WORK_TYPE_ERROR)
+    if (!currentFormState.activityLevel) {
+      nextErrors.push(ErrorType.ACTIVITY_LEVEL_ERROR)
+    }
+    if (!currentFormState.goal) {
+      nextErrors.push(ErrorType.GOAL_ERROR)
     }
     return nextErrors
   }
@@ -63,10 +64,6 @@ export const useCalculatorForm = (onCalculate: (result: number) => void) => {
     }
     const result = calculatePpmValue(formState)
     onCalculate(result)
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      behavior: 'smooth',
-    })
   }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -74,5 +71,10 @@ export const useCalculatorForm = (onCalculate: (result: number) => void) => {
     calculatePpm()
   }
 
-  return { formState, setFormState, errors, handleSubmit, t }
+  const resetForm = () => {
+    setFormState(initialState)
+    setErrors([])
+  }
+
+  return { formState, setFormState, errors, handleSubmit, resetForm, t }
 }
