@@ -20,4 +20,4 @@ This is a React SPA (Create React App) with no backend services. All computation
 
 - React 18, TypeScript 4.9, Material UI 5, i18next
 - Package manager: npm (lockfile: `package-lock.json`)
-- Node.js 20+ required (serialize-javascript override needs crypto.getRandomValues)
+- Node.js 18+ required
