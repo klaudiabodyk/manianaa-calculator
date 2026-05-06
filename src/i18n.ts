@@ -1,54 +1,53 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
-
 const resources = {
-  pl: {
+  en: {
     translation: {
-      heroHeading: 'Kalkulator zapotrzebowania kalorycznego',
-      heroIntro:
-        'Sprawdź, ile kalorii jeść dziennie, żeby redukować, utrzymać wagę albo budować masę bez zgadywania.',
+      finalScore: 'Twój wynik aby osiągnąć cel to: ',
+      calculateAgain: 'Przelicz ponownie',
+      calculateCaloricNeed:
+        'Wylicz swoje zapotrzebowanie kaloryczne, aby dobrać odpowiednią dla siebie kaloryczność.',
       gender: 'Płeć',
       women: 'Kobieta',
       men: 'Mężczyzna',
       weight: 'Waga na czczo (kg)',
       height: 'Wzrost (cm)',
-      age: 'Wiek',
-      activityLevel: 'Poziom aktywności',
-      activityLow: 'Niska aktywność',
-      activityLowDesc: 'praca siedząca, mało ruchu',
-      activityModerate: 'Umiarkowana aktywność',
-      activityModerateDesc: '2–3 treningi tygodniowo',
-      activityHigh: 'Wysoka aktywność',
-      activityHighDesc: '4+ treningi tygodniowo lub aktywna praca',
-      goal: 'Cel',
-      goalReduce: 'Redukcja masy ciała',
-      goalMaintain: 'Utrzymanie masy ciała',
-      goalGain: 'Budowanie masy',
-      calculate: 'Oblicz moje kcal',
-      yourResultToAchieveGoal: 'Twój wynik aby osiągnąć cel to:',
-      yourResultIsTooLow:
-        'Z uwagi na niską masę ciała i/lub niską aktywność fizyczną, Twoje zapotrzebowanie kaloryczne jest bardzo niskie, co może generować wyższe uczucie głodu i problemy z bilansowaniem diety. Zwiększ swoją aktywność w celu zwiększenia zapotrzebowania kalorycznego.',
+      age: 'Wiek (w latach)',
+      activity: 'Aktywność',
+      sedentary: 'Praca siedząca, obowiązki domowe',
+      sedentaryWith12Workouts: 'Praca siedząca, 1-2 treningi',
+      sedentaryWith34Workouts: 'Praca siedząca, 3-4 treningi',
+      physicalWork: 'Praca fizyczna',
+      physicalWorkWith34Workouts: 'Praca fizyczna, 3-4 treningi',
+      reduceBodyMass: 'Chcę zredukować masę ciała',
+      calculateBodyMass: 'Przybranie na masie',
+      maintain: 'Utrzymanie',
+      calculate: 'Przelicz',
+      requiredField: 'To pole jest wymagane',
+      weightMustBeGreaterThan0: 'Waga musi być większa niż 0',
+      heightMustBeGreaterThan0: 'Wzrost musi być większy niż 0',
+      ageMustBeGreaterThan0: 'Wiek musi być większy niż 0',
+      activityRequired: 'Aktywność jest wymagana',
+      buyEbook: 'KUP E-BOOK',
       goToApp: 'Przejdź do aplikacji Maniany',
-      calculateAgain: 'Oblicz ponownie',
-      trustMessage:
-        'To tylko punkt startowy. Najważniejsza jest obserwacja organizmu, nie perfekcyjne liczby.',
-      validationWeight: 'Wpisz wagę w kilogramach.',
-      validationHeight: 'Wpisz wzrost w centymetrach.',
-      validationAge: 'Wpisz swój wiek.',
-      validationActivity: 'Wybierz poziom aktywności.',
-      validationGoal: 'Wybierz swój cel.',
-      validationGender: 'Wybierz płeć.',
+      kcal: ' kcal',
+      clickToCalculate: 'Kliknij przycisk "Przelicz" aby wyliczyć zapotrzebowanie',
+      yourResultToAchieveGoal: 'Twój wynik aby osiągnąć cel to: ',
+      yourResultIsTooLow:
+        "Z uwagi na niską masę ciała i/lub niską aktywność fizyczną, Twoje zapotrzebowanie kaloryczne jest bardzo niskie, co może generować wyższe uczucie głodu i problemy z bilansowaniem diety. Zwiększ swoją aktywność w celu zwiększenia zapotrzebowania kalorycznego.",
     },
   },
 }
 
-i18n.use(initReactI18next).init({
-  resources,
-  lng: 'pl',
-  fallbackLng: 'pl',
-  interpolation: {
-    escapeValue: false,
-  },
-})
+i18n
+  .use(initReactI18next) // If you're using React
+  .init({
+    resources,
+    lng: 'en',
+    fallbackLng: 'en',
+    interpolation: {
+      escapeValue: false,
+    },
+  })
 
 export default i18n
