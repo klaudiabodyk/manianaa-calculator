@@ -1,9 +1,14 @@
 import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
 import './App.css'
 import CalculatorContainer from './calculatorManiany/container/CalculatorContainer'
 
 const App = () => {
-  return <CalculatorContainer />
+  return (
+    <Router>
+      <CalculatorContainer />
+    </Router>
+  )
 }
 
 export default App
