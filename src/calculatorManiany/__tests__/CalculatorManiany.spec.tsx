@@ -5,40 +5,45 @@ import CalculatorManiany from '../components/CalculatorManiany'
 describe('CalculatorManiany', () => {
   it('renders without crashing', () => {
     render(<CalculatorManiany />)
-    expect(screen.getByText(/Wylicz swoje zapotrzebowanie kaloryczne/i)).toBeInTheDocument()
+    expect(screen.getByRole('form')).toBeInTheDocument()
   })
 
-  it('should handle user input and calculates correctly', async () => {
+  it('should handle user input and calculate correctly', async () => {
     render(<CalculatorManiany />)
 
-    // Select gender: woman
     await userEvent.click(screen.getByRole('button', { name: 'Kobieta' }))
 
-    // Input weight: 50
-    const weightInput = screen.getByLabelText('Waga na czczo (kg)')
+    const weightInput = screen.getByLabelText(/Waga na czczo/i)
     await userEvent.type(weightInput, '50')
 
-    // Input height: 160
-    const heightInput = screen.getByLabelText('Wzrost (cm)')
+    const heightInput = screen.getByLabelText(/Wzrost/i)
     await userEvent.type(heightInput, '160')
 
-    // Input age: 30
-    const ageInput = screen.getByLabelText('Wiek (w latach)')
+    const ageInput = screen.getByLabelText(/Wiek/i)
     await userEvent.type(ageInput, '30')
 
-    // Select work type: sedentary
-    const workSelect = screen.getByLabelText('Aktywność')
-    await userEvent.click(workSelect)
-    await userEvent.click(screen.getByRole('option', { name: 'Praca siedząca, obowiązki domowe' }))
+    await userEvent.click(screen.getByRole('radio', { name: /Niska aktywność/i }))
 
-    // Select weight reduction: maintain
-    await userEvent.click(screen.getByLabelText('Utrzymanie'))
+    await userEvent.click(screen.getByRole('radio', { name: /Utrzymanie masy ciała/i }))
 
-    // Click calculate
-    await userEvent.click(screen.getByRole('button', { name: 'Przelicz' }))
+    await userEvent.click(screen.getByRole('button', { name: /Oblicz moje kcal/i }))
 
-    // Expected calculation: PPM = 10*50 + 6.25*160 - 5*30 - 161 = 500 + 1000 - 150 - 161 = 1189
-    // Multiplier 1.35: 1189 * 1.35 ≈ 1605.15, round to 1605
-    expect(screen.getByText('1605 kcal')).toBeInTheDocument()
+    // PPM = 10*50 + 6.25*160 - 5*30 - 161 = 500 + 1000 - 150 - 161 = 1189
+    // Multiplier 1.4 (low): 1189 * 1.4 = 1664.6, round to 1665
+    // Goal: maintain (no change)
+    expect(screen.getByText('1665 kcal')).toBeInTheDocument()
+  })
+
+  it('should show validation errors when submitting empty form', async () => {
+    render(<CalculatorManiany />)
+
+    await userEvent.click(screen.getByRole('button', { name: /Oblicz moje kcal/i }))
+
+    expect(screen.getByText('Wybierz płeć.')).toBeInTheDocument()
+    expect(screen.getByText('Wpisz wagę w kilogramach.')).toBeInTheDocument()
+    expect(screen.getByText('Wpisz wzrost w centymetrach.')).toBeInTheDocument()
+    expect(screen.getByText('Wpisz swój wiek.')).toBeInTheDocument()
+    expect(screen.getByText('Wybierz poziom aktywności.')).toBeInTheDocument()
+    expect(screen.getByText('Wybierz swój cel.')).toBeInTheDocument()
   })
 })

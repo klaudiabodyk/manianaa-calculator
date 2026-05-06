@@ -16,6 +16,9 @@ This is a React SPA (Create React App) with no backend services. All computation
 - Run: `npx eslint src/ --ext .ts,.tsx`
 - Prettier is configured (`.prettierrc`) but has no script in package.json; run with `npx prettier --check src/`
 
+### Tech stack summary
+
+- React 18, TypeScript 4.9, Material UI 5, i18next
 ### Known issues
 
 - Some integration tests (`CalculatorManiany.spec.tsx`, `CalculatorContainer.spec.tsx`) fail due to i18n label mismatches — the app renders English keys but tests assert Polish strings. This is a pre-existing issue in the repository.
