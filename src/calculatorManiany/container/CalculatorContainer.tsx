@@ -1,19 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Box, Typography, Container } from '@mui/material'
 import CalculatorManiany from '../components/CalculatorManiany'
-import EducationalContent, { faqJsonLd } from '../components/EducationalContent'
+import EducationalContent from '../components/EducationalContent'
 import '../styles/styles.css'
 
 const CalculatorContainer: React.FC = () => {
-  useEffect(() => {
-    const script = document.createElement('script')
-    script.type = 'application/ld+json'
-    script.textContent = JSON.stringify(faqJsonLd)
-    document.head.appendChild(script)
-    return () => {
-      document.head.removeChild(script)
-    }
-  }, [])
 
   return (
     <Box
